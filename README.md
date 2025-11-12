@@ -41,6 +41,14 @@ A modern and responsive web application that converts text to speech, allowing u
 - [Tailwind CSS](https://tailwindcss.com/) - via CDN
 - [Lucide Icons](https://lucide.dev/) - via CDN
 
+## 📈 Analytics & Privacy
+
+- Google Analytics (GA4) and Google Tag Manager now load from the deferred [`analytics.js`](analytics.js) file instead of inline snippets.
+- The script waits for `requestIdleCallback` or the first user interaction (click, key press, pointer/touch) before injecting GA/GTM assets, freeing the critical rendering path while keeping telemetry intact.
+- The GTM `<noscript>` iframe remains in the `<body>` to preserve baseline tracking for users without JavaScript.
+- If your deployment requires explicit consent, set `window.APP_ANALYTICS_AUTO_START = false` in a script that runs before `analytics.js` and call `window.appAnalytics.init()` once consent is granted (or `window.appAnalytics.enableAutoStart()` to re-enable the deferred behaviour).
+- After deploying, validate that GA/GTM receive events (e.g., GTM preview mode or GA real-time dashboard) and rerun the PageSpeed Insights test to compare results with the previous baseline.
+
 ## 💾 Local Storage
 
 The application saves text in the browser's `localStorage`, allowing you to easily retrieve your content on future visits.
