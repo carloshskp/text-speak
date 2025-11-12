@@ -25,7 +25,8 @@ A modern and responsive web application that converts text to speech, allowing u
 
 - Modern browser with Web Speech API support
 - JavaScript enabled
-- Internet connection (to load CDN dependencies)
+- Node.js 18+ (for running the local Tailwind build step)
+- Internet connection (to load analytics and icon CDN assets)
 
 ## 🛠️ Technologies Used
 
@@ -38,8 +39,25 @@ A modern and responsive web application that converts text to speech, allowing u
 
 ## 📦 Dependencies
 
-- [Tailwind CSS](https://tailwindcss.com/) - via CDN
+- [Tailwind CSS](https://tailwindcss.com/) - built locally from `src/tailwind.css`
 - [Lucide Icons](https://lucide.dev/) - via CDN
+
+## 🛠️ Local development & build
+
+1. Install dependencies: `npm install`
+2. Build the CSS bundle: `npm run build:css`
+   - This command runs `tailwindcss -i src/tailwind.css -o assets/tailwind.min.css --minify`
+   - The generated file is committed to the repository and must be rebuilt whenever you change Tailwind classes or configuration
+3. Serve the site locally (e.g. `npx http-server` or `python -m http.server`) and open `http://localhost:8000`
+4. Validate the interface on mobile and desktop viewports
+5. Before publishing, rerun the build command to guarantee the CSS bundle is up to date
+
+## 🚢 Publishing flow
+
+1. Run `npm run build:css` to ensure `assets/tailwind.min.css` reflects the latest changes
+2. Commit the generated CSS alongside your code changes
+3. Publish the static files (including the updated CSS bundle) to your hosting provider or GitHub Pages
+4. After deployment, execute a PageSpeed Insights test targeting the production URL to confirm the removal of the blocking Tailwind CDN script
 
 ## 💾 Local Storage
 

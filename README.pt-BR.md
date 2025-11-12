@@ -25,7 +25,8 @@ Um aplicativo web moderno e responsivo que converte texto em fala, permitindo qu
 
 - Navegador moderno com suporte à Web Speech API
 - JavaScript habilitado
-- Conexão de internet (para carregar as dependências de CDN)
+- Node.js 18+ (para executar a etapa local de build do Tailwind)
+- Conexão de internet (para carregar as dependências de CDN de ícones e análise)
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -38,8 +39,25 @@ Um aplicativo web moderno e responsivo que converte texto em fala, permitindo qu
 
 ## 📦 Dependências
 
-- [Tailwind CSS](https://tailwindcss.com/) - via CDN
+- [Tailwind CSS](https://tailwindcss.com/) - construído localmente a partir de `src/tailwind.css`
 - [Lucide Icons](https://lucide.dev/) - via CDN
+
+## 🛠️ Desenvolvimento local e build
+
+1. Instale as dependências: `npm install`
+2. Gere o bundle de CSS: `npm run build:css`
+   - Esse comando executa `tailwindcss -i src/tailwind.css -o assets/tailwind.min.css --minify`
+   - O arquivo gerado é versionado no repositório e deve ser reconstruído sempre que houver mudanças de classes ou configuração do Tailwind
+3. Sirva o site localmente (ex.: `npx http-server` ou `python -m http.server`) e acesse `http://localhost:8000`
+4. Valide visualmente a interface em resoluções desktop e mobile
+5. Antes de publicar, rode novamente o comando de build para garantir que o CSS está atualizado
+
+## 🚢 Fluxo de publicação
+
+1. Execute `npm run build:css` para garantir que `assets/tailwind.min.css` está sincronizado com o código
+2. Faça commit do CSS gerado junto com as demais alterações
+3. Publique os arquivos estáticos (incluindo o bundle de CSS) no provedor de hospedagem ou no GitHub Pages
+4. Após o deploy, repita o teste do PageSpeed Insights apontando para a URL de produção para confirmar a remoção do script CDN bloqueante do Tailwind
 
 ## 💾 Armazenamento Local
 
