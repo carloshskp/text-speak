@@ -80,6 +80,7 @@ The application automatically tries to select a Brazilian Portuguese (pt-BR) voi
 - Some browsers may have limitations on text length for speech synthesis
 - Playback speed may vary depending on the browser and operating system
 - Ícones são renderizados inline como SVG, eliminando a dependência do CDN do Lucide
+- The fixed footer now expands to the full viewport width on small screens, keeping calls to action easy to tap on mobile devices
 
 ## 💖 Donation Modal
 
