@@ -74,6 +74,7 @@ O aplicativo tenta selecionar automaticamente uma voz em português brasileiro (
 - A qualidade da voz depende das vozes disponíveis no seu sistema operacional
 - Alguns navegadores podem ter limitações no comprimento do texto para síntese de fala
 - A velocidade de reprodução pode variar dependendo do navegador e do sistema operacional
+- O rodapé fixo agora ocupa toda a largura em telas pequenas, garantindo botões acessíveis em dispositivos móveis
 
 ## 💖 Modal de Doação
 
